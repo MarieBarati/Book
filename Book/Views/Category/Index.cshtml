@@ -2,9 +2,19 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index Category</h1>
-<table class="table table-borderd table-striped"    style="width:100%">
+<div class="container   p-3">
+    <div    class="row  pt-4">
+        <div    class="col-6">
+            <h2 class="text-primary">Category List</h2>
+        </div>
+        <div    class="col-6  text-end">
+            <a asp-action="Create"  asp-controller="Category"   class="btn btn-primary">
+             <i class="bi bi-plus-circle"></i>&ensp;   Create New Category
+            </a>
+        </div>
+    </div>
+    <br />
+ <table class="table table-borderd table-striped"    style="width:100%">
     <thead>
         <tr>
             <th>
@@ -28,4 +38,5 @@
             </tr>
         }
     </tbody>
-</table>
+ </table>
+</div>

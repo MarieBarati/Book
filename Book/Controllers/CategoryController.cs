@@ -17,5 +17,25 @@ namespace Book.Controllers
             IEnumerable<Category> objCategoryList = _db.Categories.ToList();
             return View(objCategoryList);
         }
+        //Get
+        public IActionResult Create()
+        { 
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]//To Avoid Cross-site request forgery
+        public IActionResult Create(Category obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            { 
+                return  View(obj);
+            }
+        }
     }
 }
