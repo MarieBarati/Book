@@ -26,6 +26,10 @@ namespace Book.Controllers
         [ValidateAntiForgeryToken]//To Avoid Cross-site request forgery
         public IActionResult Create(Category obj)
         {
+            if (obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("CustomError","Check your information");
+            }
             if (ModelState.IsValid)
             {
                 _db.Categories.Add(obj);
