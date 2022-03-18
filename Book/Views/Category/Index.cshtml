@@ -35,6 +35,13 @@
                 <td width=30%>
                     @obj.DisplayOrder
                 </td>
+                <td>
+                    <div class="w-75 btn-group" role="group" >
+                        <a class="btn-primary btn-sm mx-2" asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id">
+                            <i class="bi bi-pencil-square"></i>&ensp;Edit
+                        </a>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>
