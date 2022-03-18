@@ -71,7 +71,7 @@ namespace Book.Controllers
             }
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
+                _db.Categories.Update(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -79,6 +79,42 @@ namespace Book.Controllers
             {
                 return View(obj);
             }
+        }
+
+        //Get
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var categoryFormDb = _db.Categories.Find(id);
+            if (categoryFormDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(categoryFormDb);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]//To Avoid Cross-site request forgery
+        public IActionResult DeletePost(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var categoryFormDb = _db.Categories.Find(id);
+            if (categoryFormDb == null)
+            {
+                return NotFound();
+            }
+
+            _db.Categories.Remove(categoryFormDb);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
         }
     }
 }
