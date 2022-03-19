@@ -36,6 +36,7 @@ namespace Book.Controllers
             {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Add is Done!";
                 return RedirectToAction("Index");
             }
             else
@@ -73,6 +74,7 @@ namespace Book.Controllers
             {
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Edit is Done!";
                 return RedirectToAction("Index");
             }
             else
@@ -114,6 +116,7 @@ namespace Book.Controllers
 
             _db.Categories.Remove(categoryFormDb);
                 _db.SaveChanges();
+            TempData["success"] = "Delete is Done!";
                 return RedirectToAction("Index");
         }
     }
